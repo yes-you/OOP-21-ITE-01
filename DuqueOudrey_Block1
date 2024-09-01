@@ -1,4 +1,5 @@
 <?php
+
 class Person {
     public $firstName;
     public $lastName;
@@ -7,11 +8,17 @@ class Person {
     public function __construct($firstName, $lastName, $age) {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
-        $this->age = $age;
+        $this->setAge($age);
     }
 
     public function getFullName() {
         return $this->firstName . ' ' . $this->lastName;
+    }
+    
+    public function setAge($age) {
+        if ($age > 0) {
+            $this->age = $age;
+        }
     }
 
     public function getAge() {
@@ -36,10 +43,12 @@ class Car {
 }
 
 $person = new Person("Oudrey", "Duque", 19);
+$person->setAge(20);
 $car = new Car("Porche", "911", 1983);
 
 echo "Full Name: " . $person->getFullName() . "\n";
 echo "Age: " . $person->getAge() . "\n";
+echo "Updated Age: " . $person->getAge() . "\n";
 echo "Car Info: " . $car->getCarInfo() . "\n";
 
 ?>
